@@ -1,0 +1,45 @@
+Max len:  306
+data has 7176 smiles, 96 unique characters.
+data has 797 smiles, 96 unique characters.
+/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/train/trainer.py:86: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = GradScaler()
+  0%|                                                                                                                                                               | 0/15 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/train/train.py", line 208, in <module>
+    df = trainer.train(wandb)
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/train/trainer.py", line 161, in train
+    train_loss = run_epoch('train')
+                 ^^^^^^^^^^^^^^^^^^
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/train/trainer.py", line 102, in run_epoch
+    for it, (x, y, p, scaffold) in pbar:
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/.venv/lib/python3.11/site-packages/tqdm/std.py", line 1181, in __iter__
+    for obj in iterable:
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/.venv/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 741, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/.venv/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 1548, in _next_data
+    return self._process_data(data, worker_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/.venv/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 1586, in _process_data
+    data.reraise()
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/.venv/lib/python3.11/site-packages/torch/_utils.py", line 775, in reraise
+    raise exception
+KeyError: Caught KeyError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/.venv/lib/python3.11/site-packages/torch/utils/data/_utils/worker.py", line 358, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/.venv/lib/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 54, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/.venv/lib/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 54, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/train/dataset.py", line 61, in __getitem__
+    dix =  [self.stoi[s] for s in smiles]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/train/dataset.py", line 61, in <listcomp>
+    dix =  [self.stoi[s] for s in smiles]
+            ~~~~~~~~~^^^
+KeyError: '[C@H]'

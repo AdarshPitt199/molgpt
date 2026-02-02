@@ -16,7 +16,18 @@ from torch.utils.data.dataloader import DataLoader
 from torch.cuda.amp import GradScaler
 
 from utils import check_novelty, sample, canonic_smiles
-from moses.utils import get_mol
+try:
+    from moses.utils import get_mol  # optional
+except Exception:
+    def get_mol(smiles_or_mol):
+        if smiles_or_mol is None:
+            return None
+        if hasattr(smiles_or_mol, "GetNumAtoms"):
+            return smiles_or_mol
+        try:
+            return Chem.MolFromSmiles(smiles_or_mol)
+        except Exception:
+            return None
 import re
 import pandas as pd
 from rdkit import Chem

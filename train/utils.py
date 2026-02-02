@@ -3,8 +3,19 @@ import numpy as np
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
-from moses.utils import get_mol
 from rdkit import Chem
+try:
+    from moses.utils import get_mol  # optional
+except Exception:
+    def get_mol(smiles_or_mol):
+        if smiles_or_mol is None:
+            return None
+        if hasattr(smiles_or_mol, "GetNumAtoms"):
+            return smiles_or_mol
+        try:
+            return Chem.MolFromSmiles(smiles_or_mol)
+        except Exception:
+            return None
    
 import numpy as np
 import threading

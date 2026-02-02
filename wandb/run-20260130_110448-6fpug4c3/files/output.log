@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/train/train.py", line 158, in <module>
+    max_len = max(lens)
+              ^^^^^^^^^
+ValueError: max() arg is an empty sequence

@@ -1,0 +1,11 @@
+{"time":"2026-01-30T13:07:24.781886335-05:00","level":"INFO","msg":"stream: starting","core version":"0.24.1"}
+{"time":"2026-01-30T13:07:24.965363652-05:00","level":"INFO","msg":"stream: created new stream","id":"pixlwa1y"}
+{"time":"2026-01-30T13:07:24.965445586-05:00","level":"INFO","msg":"handler: started","stream_id":"pixlwa1y"}
+{"time":"2026-01-30T13:07:24.965519796-05:00","level":"INFO","msg":"stream: started","id":"pixlwa1y"}
+{"time":"2026-01-30T13:07:24.965539378-05:00","level":"INFO","msg":"sender: started","stream_id":"pixlwa1y"}
+{"time":"2026-01-30T13:07:24.965540196-05:00","level":"INFO","msg":"writer: started","stream_id":"pixlwa1y"}
+{"time":"2026-01-30T13:07:27.071344737-05:00","level":"INFO","msg":"stream: closing","id":"pixlwa1y"}
+{"time":"2026-01-30T13:07:27.480134907-05:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-01-30T13:07:27.612259223-05:00","level":"INFO","msg":"handler: closed","stream_id":"pixlwa1y"}
+{"time":"2026-01-30T13:07:27.612429009-05:00","level":"INFO","msg":"sender: closed","stream_id":"pixlwa1y"}
+{"time":"2026-01-30T13:07:27.612447842-05:00","level":"INFO","msg":"stream: closed","id":"pixlwa1y"}
