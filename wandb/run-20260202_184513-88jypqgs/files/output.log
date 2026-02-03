@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/train/train.py", line 89, in <module>
+    prop = train_data[args.props].values.tolist()
+           ~~~~~~~~~~^^^^^^^^^^^^
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/.venv/lib/python3.11/site-packages/pandas/core/frame.py", line 4384, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/.venv/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 6302, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/.venv/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 6352, in _raise_if_missing
+    raise KeyError(f"None of [{key}] are in the [{axis_name}]")
+KeyError: "None of [Index(['qed'], dtype='str')] are in the [columns]"

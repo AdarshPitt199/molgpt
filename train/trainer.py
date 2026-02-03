@@ -5,6 +5,7 @@ so nothing in this file really has anything to do with GPT specifically.
 
 import math
 import logging
+import os
 
 from tqdm import tqdm
 import numpy as np
@@ -16,7 +17,19 @@ from torch.utils.data.dataloader import DataLoader
 from torch.cuda.amp import GradScaler
 
 from utils import check_novelty, sample, canonic_smiles
-from moses.utils import get_mol
+try:
+    from moses.utils import get_mol
+except Exception:
+    from rdkit import Chem
+    def get_mol(smiles_or_mol):
+        if smiles_or_mol is None:
+            return None
+        if hasattr(smiles_or_mol, "GetNumAtoms"):
+            return smiles_or_mol
+        try:
+            return Chem.MolFromSmiles(smiles_or_mol)
+        except Exception:
+            return None
 import re
 import pandas as pd
 from rdkit import Chem
@@ -66,6 +79,9 @@ class Trainer:
         # DataParallel wrappers keep raw model object in .module attribute
         raw_model = self.model.module if hasattr(self.model, "module") else self.model
         logger.info("saving %s", self.config.ckpt_path)
+        ckpt_dir = os.path.dirname(self.config.ckpt_path)
+        if ckpt_dir:
+            os.makedirs(ckpt_dir, exist_ok=True)
         torch.save(raw_model.state_dict(), self.config.ckpt_path)
 
     def train(self, wandb):

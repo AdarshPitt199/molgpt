@@ -62,21 +62,21 @@ if __name__ == '__main__':
     # data = data.sample(frac = 0.1).reset_index(drop=True)
     data.columns = data.columns.str.lower()
 
-    if 'moses' in args.data_name:
-        train_data = data[data['split'] == 'train'].reset_index(
-            drop=True)   # 'split' instead of 'source' in moses
+    if 'split' in data.columns:
+        train_data = data[data['split'] == 'train'].reset_index(drop=True)
+    elif 'source' in data.columns:
+        train_data = data[data['source'] == 'train'].reset_index(drop=True)
     else:
-        train_data = data[data['source'] == 'train'].reset_index(
-            drop=True)   # 'split' instead of 'source' in moses
+        raise ValueError("Dataset must contain 'split' or 'source' column for train/val separation")
 
     # train_data = train_data.sample(frac = 0.1, random_state = 42).reset_index(drop=True)
 
-    if 'moses' in args.data_name:
-        val_data = data[data['split'] == 'test'].reset_index(
-            drop=True)   # test for Moses. val for guacamol
+    if 'split' in data.columns:
+        val_data = data[data['split'] == 'test'].reset_index(drop=True)
+    elif 'source' in data.columns:
+        val_data = data[data['source'] == 'val'].reset_index(drop=True)
     else:
-        val_data = data[data['source'] == 'val'].reset_index(
-            drop=True)   # test for Moses. val for guacamol
+        raise ValueError("Dataset must contain 'split' or 'source' column for train/val separation")
 
     # val_data = val_data.sample(frac = 0.1, random_state = 42).reset_index(drop=True)
 
@@ -86,12 +86,20 @@ if __name__ == '__main__':
     # prop = train_data[['qed']]
     # vprop = val_data[['qed']]
 
-    prop = train_data[args.props].values.tolist()
-    vprop = val_data[args.props].values.tolist()
     num_props = args.num_props
+    if num_props > 0:
+        prop = train_data[args.props].values.tolist()
+        vprop = val_data[args.props].values.tolist()
+    else:
+        prop = [0.0] * len(smiles)
+        vprop = [0.0] * len(vsmiles)
 
-    scaffold = train_data['scaffold_smiles']
-    vscaffold = val_data['scaffold_smiles']
+    if args.scaffold:
+        scaffold = train_data['scaffold_smiles']
+        vscaffold = val_data['scaffold_smiles']
+    else:
+        scaffold = [''] * len(smiles)
+        vscaffold = [''] * len(vsmiles)
 
     pattern = "(\[[^\]]+]|<|Br?|Cl?|N|O|S|P|F|I|b|c|n|o|s|p|\(|\)|\.|=|#|-|\+|\\\\|\/|:|~|@|\?|>|\*|\$|\%[0-9]{2}|[0-9])"
     regex = re.compile(pattern)
@@ -101,10 +109,13 @@ if __name__ == '__main__':
     max_len = max(lens)
     print('Max len: ', max_len)
 
-    lens = [len(regex.findall(i.strip()))
-            for i in (list(scaffold.values) + list(vscaffold.values))]
-    scaffold_max_len = max(lens)
-    print('Scaffold max len: ', scaffold_max_len)
+    if args.scaffold:
+        lens = [len(regex.findall(i.strip()))
+                for i in (list(scaffold.values) + list(vscaffold.values))]
+        scaffold_max_len = max(lens)
+        print('Scaffold max len: ', scaffold_max_len)
+    else:
+        scaffold_max_len = 0
 
     smiles = [i + str('<')*(max_len - len(regex.findall(i.strip())))
                 for i in smiles]
@@ -137,4 +148,5 @@ if __name__ == '__main__':
                         tconf, train_dataset.stoi, train_dataset.itos)
     df = trainer.train(wandb)
 
-    df.to_csv(f'{args.run_name}.csv', index=False)
+    if df is not None:
+        df.to_csv(f'{args.run_name}.csv', index=False)

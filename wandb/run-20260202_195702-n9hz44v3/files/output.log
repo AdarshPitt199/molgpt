@@ -1,0 +1,11 @@
+Max len:  54
+data has 1584663 smiles, 94 unique characters.
+data has 176074 smiles, 94 unique characters.
+/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/train/trainer.py:91: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = GradScaler()
+  0%|                                                                                                                                                             | 0/4127 [00:00<?, ?it/s]/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/train/trainer.py:116: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast():
+epoch 1 iter 4126: train loss 0.36593. lr 3.339154e-04: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 4127/4127 [04:57<00:00, 13.89it/s]
+Saving at epoch 1
+epoch 2 iter 4126: train loss 0.34768. lr 6.000000e-05: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 4127/4127 [05:01<00:00, 13.68it/s]
+Saving at epoch 2

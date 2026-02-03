@@ -13,7 +13,18 @@ import torch
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from moses.utils import get_mol
+try:
+        from moses.utils import get_mol
+except Exception:
+        def get_mol(smiles_or_mol):
+                if smiles_or_mol is None:
+                        return None
+                if hasattr(smiles_or_mol, "GetNumAtoms"):
+                        return smiles_or_mol
+                try:
+                        return Chem.MolFromSmiles(smiles_or_mol)
+                except Exception:
+                        return None
 import re
 import moses
 import json
@@ -61,12 +72,21 @@ if __name__ == '__main__':
         data = data.dropna(axis=0).reset_index(drop=True)
         data.columns = data.columns.str.lower()
 
-        if 'moses' in args.data_name:
-            smiles = data[data['split']!='test_scaffolds']['smiles']   # needed for moses
-            scaf = data[data['split']!='test_scaffolds']['scaffold_smiles']   # needed for moses
+        if 'split' in data.columns:
+                smiles = data[data['split'] != 'test_scaffolds']['smiles']
+                if 'scaffold_smiles' in data.columns:
+                        scaf = data[data['split'] != 'test_scaffolds']['scaffold_smiles']
+                else:
+                        scaf = [''] * len(smiles)
+        elif 'source' in data.columns:
+                smiles = data[data['source'] != 'test']['smiles']
+                if 'scaffold_smiles' in data.columns:
+                        scaf = data[data['source'] != 'test']['scaffold_smiles']
+                else:
+                        scaf = [''] * len(smiles)
         else:
-            smiles = data[data['source']!='test']['smiles']
-            scaf = data[data['source']!='test']['scaffold_smiles']
+                smiles = data['smiles']
+                scaf = data['scaffold_smiles'] if 'scaffold_smiles' in data.columns else [''] * len(smiles)
 
         # scaffold = data[data['split']!='test_scaffolds']['scaffold_smiles']
         # lens = [len(i.strip()) for i in scaffold.values]
@@ -220,10 +240,13 @@ if __name__ == '__main__':
 
             canon_smiles = [canonic_smiles(s) for s in results['smiles']]
             unique_smiles = list(set(canon_smiles))
-            if 'moses' in args.data_name:
-                    novel_ratio = check_novelty(unique_smiles, set(data[data['split']=='train']['smiles']))   # replace 'source' with 'split' for moses
+            if 'split' in data.columns:
+                    train_smiles = set(data[data['split'] == 'train']['smiles'])
+            elif 'source' in data.columns:
+                    train_smiles = set(data[data['source'] == 'train']['smiles'])
             else:
-                    novel_ratio = check_novelty(unique_smiles, set(data[data['source']=='train']['smiles']))   # replace 'source' with 'split' for moses
+                    train_smiles = set(data['smiles'])
+            novel_ratio = check_novelty(unique_smiles, train_smiles)
 
 
             print('Valid ratio: ', np.round(len(results)/(args.batch_size*gen_iter), 3))
