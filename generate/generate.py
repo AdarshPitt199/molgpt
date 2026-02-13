@@ -174,6 +174,7 @@ if __name__ == '__main__':
 
         if args.scaffold:
             scaf_condition = ['O=C(Cc1ccccc1)NCc1ccccc1', 'c1cnc2[nH]ccc2c1', 'c1ccc(-c2ccnnc2)cc1', 'c1ccc(-n2cnc3ccccc32)cc1', 'O=C(c1cc[nH]c1)N1CCN(c2ccccc2)CC1']
+            scaf_condition = ['OCC1=CC(OC)=C(O)C(OC)=C1']
             scaf_condition = [ i + str('<')*(scaffold_max_len - len(regex.findall(i))) for i in scaf_condition]
 
         all_dfs = []
@@ -477,6 +478,8 @@ if __name__ == '__main__':
                     results['validity'] = np.round(len(results)/(args.batch_size*gen_iter), 3)
                     results['unique'] = np.round(len(unique_smiles)/len(results), 3)
                     results['novelty'] = np.round(novel_ratio/100, 3)
+                    out_csv = args.csv_name + '.csv'
+                    results.to_csv(out_csv, mode='a', header=not os.path.exists(out_csv), index=False)
                     all_dfs.append(results)
 
 
@@ -489,7 +492,7 @@ if __name__ == '__main__':
         if 'moses' in args.data_name:
                 novel_ratio = check_novelty(unique_smiles, set(data[data['split']=='train']['smiles']))    # replace 'source' with 'split' for moses
         else:
-                novel_ratio = check_novelty(unique_smiles, set(data[data['source']=='train']['smiles']))    # replace 'source' with 'split' for moses
+                novel_ratio = check_novelty(unique_smiles, set(data[data['split']=='train']['smiles']))    # replace 'source' with 'split' for moses
                
 
         print('Valid ratio: ', np.round(len(results)/(args.batch_size*gen_iter*count), 3))

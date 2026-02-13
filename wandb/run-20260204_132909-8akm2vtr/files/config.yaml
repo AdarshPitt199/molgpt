@@ -1,0 +1,68 @@
+_wandb:
+    value:
+        cli_version: 0.24.1
+        e:
+            h83ze29leu7rip8f3x6b3tjpy7is1ot8:
+                args:
+                    - --run_name
+                    - scaf_tpsa/run
+                    - --data_name
+                    - moses_dataset_v2
+                    - --scaffold
+                    - --props
+                    - tpsa
+                    - --num_props
+                    - "1"
+                    - --batch_size
+                    - "384"
+                    - --max_epochs
+                    - "10"
+                codePath: train/train.py
+                codePathLocal: train/train.py
+                cpu_count: 12
+                cpu_count_logical: 24
+                cudaVersion: "13.0"
+                disk:
+                    /:
+                        total: "2001491361792"
+                        used: "1311572393984"
+                email: adarsh.gadari@gmail.com
+                executable: /home/furiosa/Documents/Adarsh/PolyAmor/molgpt/.venv/bin/python
+                git:
+                    commit: 4706e5825c02e346846d07ec71ed7d8cc15d9e0f
+                    remote: https://github.com/AdarshPitt199/molgpt.git
+                gpu: NVIDIA RTX 4000 Ada Generation
+                gpu_count: 2
+                gpu_nvidia:
+                    - architecture: Ada
+                      cudaCores: 6144
+                      memoryTotal: "21469593600"
+                      name: NVIDIA RTX 4000 Ada Generation
+                      uuid: GPU-261e1210-d11b-4a1e-3b62-2ee7b4781641
+                    - architecture: Ada
+                      cudaCores: 6144
+                      memoryTotal: "21469593600"
+                      name: NVIDIA RTX 4000 Ada Generation
+                      uuid: GPU-caebbb50-f1cd-4f68-32bb-efac914f7cca
+                host: carlab-linux
+                memory:
+                    total: "66623901696"
+                os: Linux-6.8.0-90-generic-x86_64-with-glibc2.35
+                program: /home/furiosa/Documents/Adarsh/PolyAmor/molgpt/train/train.py
+                python: CPython 3.11.13
+                root: /home/furiosa/Documents/Adarsh/PolyAmor/molgpt
+                startedAt: "2026-02-04T18:29:09.207121Z"
+                writerId: h83ze29leu7rip8f3x6b3tjpy7is1ot8
+        m: []
+        python_version: 3.11.13
+        t:
+            "1":
+                - 1
+            "2":
+                - 1
+            "3":
+                - 13
+            "4": 3.11.13
+            "5": 0.24.1
+            "12": 0.24.1
+            "13": linux-x86_64

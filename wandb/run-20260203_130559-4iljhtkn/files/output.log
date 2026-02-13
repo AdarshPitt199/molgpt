@@ -1,0 +1,27 @@
+Max len:  54
+data has 1584663 smiles, 94 unique characters.
+data has 176074 smiles, 94 unique characters.
+/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/train/trainer.py:91: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = GradScaler()
+  0%|                                                                                                                                                       | 0/4127 [00:00<?, ?it/s]/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/train/trainer.py:116: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast():
+epoch 1 iter 4126: train loss 0.36772. lr 5.883396e-04: 100%|████████████████████████████████████████████████████████████████████████████████████| 4127/4127 [05:03<00:00, 13.58it/s]
+Saving at epoch 1
+epoch 2 iter 4126: train loss 0.35484. lr 5.490853e-04: 100%|████████████████████████████████████████████████████████████████████████████████████| 4127/4127 [04:53<00:00, 14.04it/s]
+Saving at epoch 2
+epoch 3 iter 4126: train loss 0.34449. lr 4.858631e-04: 100%|████████████████████████████████████████████████████████████████████████████████████| 4127/4127 [04:46<00:00, 14.38it/s]
+Saving at epoch 3
+epoch 4 iter 4126: train loss 0.33705. lr 4.047567e-04: 100%|████████████████████████████████████████████████████████████████████████████████████| 4127/4127 [04:44<00:00, 14.52it/s]
+Saving at epoch 4
+epoch 5 iter 4126: train loss 0.33006. lr 3.135702e-04: 100%|████████████████████████████████████████████████████████████████████████████████████| 4127/4127 [04:41<00:00, 14.67it/s]
+Saving at epoch 5
+epoch 6 iter 4126: train loss 0.32211. lr 2.210779e-04: 100%|████████████████████████████████████████████████████████████████████████████████████| 4127/4127 [04:38<00:00, 14.83it/s]
+Saving at epoch 6
+epoch 7 iter 4126: train loss 0.32412. lr 1.361798e-04: 100%|████████████████████████████████████████████████████████████████████████████████████| 4127/4127 [04:39<00:00, 14.75it/s]
+Saving at epoch 7
+epoch 8 iter 4126: train loss 0.32144. lr 6.704496e-05: 100%|████████████████████████████████████████████████████████████████████████████████████| 4127/4127 [04:42<00:00, 14.61it/s]
+Saving at epoch 8
+epoch 9 iter 4126: train loss 0.31639. lr 6.000000e-05: 100%|████████████████████████████████████████████████████████████████████████████████████| 4127/4127 [04:42<00:00, 14.60it/s]
+Saving at epoch 9
+epoch 10 iter 4126: train loss 0.32447. lr 6.000000e-05: 100%|███████████████████████████████████████████████████████████████████████████████████| 4127/4127 [04:40<00:00, 14.72it/s]
+Saving at epoch 10

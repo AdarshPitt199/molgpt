@@ -14,7 +14,7 @@ import torch
 import torch.optim as optim
 from torch.optim.lr_scheduler import LambdaLR
 from torch.utils.data.dataloader import DataLoader
-from torch.cuda.amp import GradScaler
+from torch.amp import GradScaler
 
 from utils import check_novelty, sample, canonic_smiles
 try:

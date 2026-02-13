@@ -1,0 +1,27 @@
+Max len:  54
+data has 1584663 smiles, 94 unique characters.
+data has 176074 smiles, 94 unique characters.
+/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/train/trainer.py:91: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = GradScaler()
+  0%|                                                                                                                                                       | 0/4127 [00:00<?, ?it/s]/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/train/trainer.py:116: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast():
+epoch 1 iter 375: train loss 0.62493. lr 5.365566e-04:   9%|███████▊                                                                              | 376/4127 [00:26<04:28, 13.98it/s]
+Traceback (most recent call last):
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/train/train.py", line 149, in <module>
+    df = trainer.train(wandb)
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/train/trainer.py", line 166, in train
+    train_loss = run_epoch('train')
+                 ^^^^^^^^^^^^^^^^^^
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/train/trainer.py", line 129, in run_epoch
+    scaler.step(optimizer)
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/.venv/lib/python3.11/site-packages/torch/amp/grad_scaler.py", line 463, in step
+    retval = self._maybe_opt_step(optimizer, optimizer_state, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/.venv/lib/python3.11/site-packages/torch/amp/grad_scaler.py", line 356, in _maybe_opt_step
+    if not sum(v.item() for v in optimizer_state["found_inf_per_device"].values()):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/furiosa/Documents/Adarsh/PolyAmor/molgpt/.venv/lib/python3.11/site-packages/torch/amp/grad_scaler.py", line 356, in <genexpr>
+    if not sum(v.item() for v in optimizer_state["found_inf_per_device"].values()):
+               ^^^^^^^^
+KeyboardInterrupt

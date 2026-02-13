@@ -1,0 +1,13 @@
+{"time":"2026-02-04T15:54:57.599675323-05:00","level":"INFO","msg":"stream: starting","core version":"0.24.1"}
+{"time":"2026-02-04T15:54:57.806767639-05:00","level":"INFO","msg":"stream: created new stream","id":"8zotki44"}
+{"time":"2026-02-04T15:54:57.806887235-05:00","level":"INFO","msg":"handler: started","stream_id":"8zotki44"}
+{"time":"2026-02-04T15:54:57.807069245-05:00","level":"INFO","msg":"stream: started","id":"8zotki44"}
+{"time":"2026-02-04T15:54:57.807108549-05:00","level":"INFO","msg":"sender: started","stream_id":"8zotki44"}
+{"time":"2026-02-04T15:54:57.807109593-05:00","level":"INFO","msg":"writer: started","stream_id":"8zotki44"}
+{"time":"2026-02-04T17:06:58.337537481-05:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/adarsh-gadari-university-of-north-carolina-at-greensboro/lig_gpt/8zotki44/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2026-02-04T17:51:30.752131319-05:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/adarsh-gadari-university-of-north-carolina-at-greensboro/lig_gpt/8zotki44/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2026-02-04T18:18:03.373884358-05:00","level":"INFO","msg":"stream: closing","id":"8zotki44"}
+{"time":"2026-02-04T18:18:03.664526153-05:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-02-04T18:18:03.792410499-05:00","level":"INFO","msg":"handler: closed","stream_id":"8zotki44"}
+{"time":"2026-02-04T18:18:03.7926036-05:00","level":"INFO","msg":"sender: closed","stream_id":"8zotki44"}
+{"time":"2026-02-04T18:18:03.792645765-05:00","level":"INFO","msg":"stream: closed","id":"8zotki44"}
